@@ -1,3 +1,6 @@
+const humanSelection = getHumanChoice(3);
+const computerSelection = getComputerChoice();
+
 /* Randomly return rock, paper, or scissors */
 function getComputerChoice(max) {
   let result = ""
@@ -14,13 +17,25 @@ function getComputerChoice(max) {
   } else {
     return;
   }
-
-  /* Prompt user to input rock, paper, or scissors */
-  function getHumanChoice(rps) {
-    choice = prompt();
-  }
-  /* Compare results */
 }
+  /* Prompt user to input rock, paper, or scissors */
+function getHumanChoice() { 
+  let choice = prompt("Rock, Paper, or Scissors?");
+  /*  Make choice case-insensitive */
+  if (choice === null) {
+    choice = prompt("Rock, Paper, or Scissors?"); 
+  }
+}
+  /* Compare choices */
+  playRound(ComputerChoice, humanChoice) {
 
-(getComputerChoice(3));
-(getHumanChoice(rps));
+  }
+  /* Keep Score/increment */
+  function humanScore() {
+    let score = 0;
+  }
+  function computerScore() {
+    let score = 0;
+  }
+ /* Announce winner */
+
