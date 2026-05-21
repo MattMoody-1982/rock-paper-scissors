@@ -1,27 +1,20 @@
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice(3);
-let humanScore = 0;
-let computerScore = 0;
-let round = 0;
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice(3);
+
+let round = 1;
+
 /* Randomly return rock, paper, or scissors */
 function getComputerChoice(max) {
-
   let rps = Math.floor(Math.random() * max);
-  let result = ""
-  if (rps === 0) {
-    result = "Rock";
-    console.log("Opponent choice " + result);
-    return result;
-  } else if (rps === 1) {
-    result = "Paper";
-    console.log("Opponent choice " + result);
-    return result;
-  } else {
-    result = "Scissors";
-    console.log("Opponent choice " + result);
-    return result;
-  }
+  switch (true) {
+    case (rps === 0):   
+      return "Rock";
+    case (rps === 1):  
+      return "Paper";
+    case (rps === 2):
+      return "Scissors";
+  }  
 }
 
 /* Prompt user to input rock, paper, or scissors */
@@ -32,75 +25,85 @@ function getHumanChoice() {
   return choice;
 }
 
-/* Compare choices */
-function playRound(computerChoice, humanChoice) {
-  if (computerSelection === humanSelection) {
-    console.log("Round was a draw!");
-  } 
-
-  switch (true) {
-    /* Win conditions */
-    case (humanSelection === "Rock" && computerSelection === "Scissors"):
-    case (humanSelection === "Paper" && computerSelection === "Rock"):
-    case (humanSelection === "Scissors" && computerSelection === "Paper"):
-      ++humanScore;
-      return `You win! ${humanSelection} beats ${computerSelection}.`;
-
-    /* Lose conditions */
-    case (humanSelection === "Rock" && computerSelection === "Paper"):
-    case (humanSelection === "Paper" && computerSelection === "Scissors"):
-    case (humanSelection === "Scissors" && computerSelection === "Rock"):
-      ++computerScore;
-      return `You lose! ${computerSelection} beats ${humanSelection}.`;
-
-    default: 
-      return "Invalid input. Please choose rock, paper, or scissors.";
-  }
-}
-
-/* function playGame() {
-  let done = false;
-  While (!done) {
-  getComputerChoice();
-  getHumanChoice();
-  }
-}
-*/ 
-/* playGame(); */
-
 function playGame() {
-    ++round;
-    console.log("Round " + round);
-    console.log(playRound(humanSelection, computerSelection));
-    console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+  let humanScore = 0;
+  let computerScore = 0;
 
-    ++round;
-    console.log("Round " + round);
-    getHumanChoice();
-    getComputerChoice(3);
-    console.log(playRound(humanSelection, computerSelection));
-    console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`) 
+  /* Compare choices */
+  function playRound(computerChoice, humanChoice) {
+    if (computerSelection === humanSelection) {
+      return ("Round was a draw!");
+    } 
 
-    ++round;
-    console.log("Round " + round);
-    getHumanChoice();
-    getComputerChoice(3);
-    console.log(playRound(humanSelection, computerSelection));
-    console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`) 
+    switch (true) {
+      /* Win conditions */
+      case (humanSelection === "Rock" && computerSelection === "Scissors"):
+      case (humanSelection === "Paper" && computerSelection === "Rock"):
+      case (humanSelection === "Scissors" && computerSelection === "Paper"):
+        ++humanScore;
+        return `You win! ${humanSelection} beats ${computerSelection}.`;
 
-    ++round;
-    console.log("Round " + round);
-    getHumanChoice();
-    getComputerChoice(3);
-    console.log(playRound(humanSelection, computerSelection));
-    console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`) 
+      /* Lose conditions */
+      case (humanSelection === "Rock" && computerSelection === "Paper"):
+      case (humanSelection === "Paper" && computerSelection === "Scissors"):
+      case (humanSelection === "Scissors" && computerSelection === "Rock"):
+        ++computerScore;
+        return `You lose! ${computerSelection} beats ${humanSelection}.`;
 
-    ++round;
-    console.log("Round " + round);
-    getHumanChoice();
-    getComputerChoice(3);
-    console.log(playRound(humanSelection, computerSelection));
-    console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`) 
+      default: 
+        return "Invalid input. Please choose rock, paper, or scissors.";
+    }
+  }
+
+/* while (i = 1; i <= 5; ++i) {
+  console.log("Round " + round);
+  console.log (`You chose ${humanSelection}.`);
+  console.log (`Opponent chose ${computerSelection}.`);
+  console.log(playRound(humanSelection, computerSelection));
+  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+} */
+
+  console.log("Round " + round);
+  console.log (`You chose ${humanSelection}.`);
+  console.log (`Opponent chose ${computerSelection}.`);
+  console.log(playRound(humanSelection, computerSelection));
+  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+  ++round;
+
+  humanSelection = getHumanChoice();
+  computerSelection = getComputerChoice(3);
+  console.log("Round " + round);
+  console.log (`You chose ${humanSelection}.`);
+  console.log (`Opponent chose ${computerSelection}.`);
+  console.log(playRound());
+  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+
+  ++round
+  humanSelection = getHumanChoice();
+  computerSelection = getComputerChoice(3);
+  console.log("Round " + round);
+  console.log (`You chose ${humanSelection}.`);
+  console.log (`Opponent chose ${computerSelection}.`);
+  console.log(playRound());
+  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+
+  ++round
+  humanSelection = getHumanChoice();
+  computerSelection = getComputerChoice(3);
+  console.log("Round " + round);
+  console.log (`You chose ${humanSelection}.`);
+  console.log (`Opponent chose ${computerSelection}.`);
+  console.log(playRound());
+  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+
+  ++round
+  humanSelection = getHumanChoice();
+  computerSelection = getComputerChoice(3);
+  console.log("Round " + round);
+  console.log (`You chose ${humanSelection}.`);
+  console.log (`Opponent chose ${computerSelection}.`);
+  console.log(playRound());
+  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
 }
 
 playGame();
