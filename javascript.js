@@ -2,7 +2,7 @@
 let humanSelection = getHumanChoice();
 let computerSelection = getComputerChoice(3);
 
-let round = 1;
+let round = 0;
 
 /* Randomly return rock, paper, or scissors */
 function getComputerChoice(max) {
@@ -55,56 +55,33 @@ function playGame() {
     }
   }
 
-/* while (i = 1; i <= 5; ++i) {
+    ++round
+    console.log("Round " + round);
+    console.log (`You chose ${humanSelection}.`);
+    console.log (`Opponent chose ${computerSelection}.`);
+    console.log(playRound(humanSelection, computerSelection));
+    console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+  
+
+  for (i = 2; i <= 5; ++i) {
+  ++round
+  humanSelection = getHumanChoice();
+  computerSelection = getComputerChoice(3);
   console.log("Round " + round);
   console.log (`You chose ${humanSelection}.`);
   console.log (`Opponent chose ${computerSelection}.`);
   console.log(playRound(humanSelection, computerSelection));
   console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
-} */
-
-  console.log("Round " + round);
-  console.log (`You chose ${humanSelection}.`);
-  console.log (`Opponent chose ${computerSelection}.`);
-  console.log(playRound(humanSelection, computerSelection));
-  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
-  ++round;
-
-  humanSelection = getHumanChoice();
-  computerSelection = getComputerChoice(3);
-  console.log("Round " + round);
-  console.log (`You chose ${humanSelection}.`);
-  console.log (`Opponent chose ${computerSelection}.`);
-  console.log(playRound());
-  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
-
-  ++round
-  humanSelection = getHumanChoice();
-  computerSelection = getComputerChoice(3);
-  console.log("Round " + round);
-  console.log (`You chose ${humanSelection}.`);
-  console.log (`Opponent chose ${computerSelection}.`);
-  console.log(playRound());
-  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
-
-  ++round
-  humanSelection = getHumanChoice();
-  computerSelection = getComputerChoice(3);
-  console.log("Round " + round);
-  console.log (`You chose ${humanSelection}.`);
-  console.log (`Opponent chose ${computerSelection}.`);
-  console.log(playRound());
-  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
-
-  ++round
-  humanSelection = getHumanChoice();
-  computerSelection = getComputerChoice(3);
-  console.log("Round " + round);
-  console.log (`You chose ${humanSelection}.`);
-  console.log (`Opponent chose ${computerSelection}.`);
-  console.log(playRound());
-  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+  } 
+  if (humanScore === computerScore) {
+    console.log ("You tied!");
+  } else if (humanScore > computerScore) { 
+    console.log ("You won!");
+  } else {
+    console.log ("Your opponent won!");
+  }
 }
+  
 
 playGame();
 /* Announce winner */
