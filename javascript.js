@@ -55,12 +55,12 @@ function playGame() {
     }
   }
 
-    ++round
-    console.log("Round " + round);
-    console.log (`You chose ${humanSelection}.`);
-    console.log (`Opponent chose ${computerSelection}.`);
-    console.log(playRound(humanSelection, computerSelection));
-    console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
+  ++round
+  console.log("Round " + round);
+  console.log (`You chose ${humanSelection}.`);
+  console.log (`Opponent chose ${computerSelection}.`);
+  console.log(playRound(humanSelection, computerSelection));
+  console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
   
 
   for (i = 2; i <= 5; ++i) {
@@ -70,7 +70,7 @@ function playGame() {
   console.log("Round " + round);
   console.log (`You chose ${humanSelection}.`);
   console.log (`Opponent chose ${computerSelection}.`);
-  console.log(playRound(humanSelection, computerSelection));
+  console.log(playRound());
   console.log (`Your score is ${humanScore}.  Their score is ${computerScore}.`)
   } 
   if (humanScore === computerScore) {
