@@ -3,21 +3,23 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice(3);
 let humanScore = 0;
 let computerScore = 0;
+let round = 0;
 /* Randomly return rock, paper, or scissors */
 function getComputerChoice(max) {
   let result = ""
   let rps = Math.floor(Math.random() * max);
   if (rps === 0) {
     result = "Rock";
+    console.log("Opponent choice " + result);
     return result;
   } else if (rps === 1) {
     result = "Paper";
-    return result;
-  } else if (rps === 2) {
-    result = "Scissors";
+    console.log("Opponent choice " + result);
     return result;
   } else {
-    return;
+    result = "Scissors";
+    console.log("Opponent choice " + result);
+    return result;
   }
 }
 
@@ -33,30 +35,43 @@ function getHumanChoice() {
 function playRound(computerChoice, humanChoice) {
   if (computerSelection === humanSelection) {
     console.log("Round was a draw!");
-  } else if (computerSelection === "Rock" && humanSelection === "Paper") {
-    console.log("You win! Paper beats Rock.");
-    ++humanScore;
-  } else if (computerSelection === "Rock" && humanSelection === "Scissors") {
-    console.log("You lose! Rock beats Scissors.")
-    ++computerScore;
-  } else if (computerSelection === "Paper" && humanSelection === "Scissors") {
-    console.log ("You win! Scissors beat Rock.") 
-    ++humanScore;
-  } else if (computerSelection === "Paper" && humanSelection === "Rock") {
-    console.log ("You lose! Paper beat Rock.")
-    ++computerScore;
-  } else if (computerSelection === "Scissors" && humanSelection === "Rock") {
-    console.log ("You win! Scissors beat Paper")
-    ++humanScore;
-  } else if (computerSelection === "Scissors" && humanSelection === "Paper") {
-    console.log ("You lose! Scissors beat Paper")
-  } else {
-    getHumanChoice();
+  } 
+
+  switch (true) {
+    /* Win conditions */
+    case (humanSelection === "Rock" && computerSelection === "Scissors"):
+    case (humanSelection === "Paper" && computerSelection === "Rock"):
+    case (humanSelection === "Scissors" && computerSelection === "Paper"):
+      return `You win! ${humanSelection} beats ${computerSelection}.`;
+
+    /* Lose conditions */
+    case (humanSelection === "Rock" && computerSelection === "Paper"):
+    case (humanSelection === "Paper" && computerSelection === "Scissors"):
+    case (humanSelection === "Scissors" && computerSelection === "Rock"):
+      return `You lose! ${computerSelection} beats ${humanSelection}.`;
+
+    default: 
+      return "Invalid input. Please choose rock, paper, or scissors.";
   }
 }
 
-playRound();
-/* Announce winner */
+/* function playGame() {
+  let done = false;
+  While (!done) {
+  getComputerChoice();
+  getHumanChoice();
+  }
+}
+*/ 
+/* playGame(); */
 
-console.log(computerSelection);
-console.log(humanSelection);
+function playGame() {
+  for(let i = 1; i <= 5; i++) {
+    ++round;
+    console.log("Round " + round);
+    console.log(playRound(humanSelection, computerSelection));
+  }
+}
+
+playGame();
+/* Announce winner */
